@@ -1,6 +1,8 @@
 import { BlogCard } from "@/components/BlogCard";
 import { BlogService } from "@/lib/services";
 
+export const revalidate = 60; // Actualizar cada minuto
+
 export default async function BlogPage() {
     const posts = await BlogService.getAll();
 

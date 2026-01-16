@@ -1,6 +1,8 @@
 import { EpisodeCard } from "@/components/EpisodeCard";
 import { EpisodeService } from "@/lib/services";
 
+export const revalidate = 60; // Actualizar cada minuto
+
 export default async function EpisodiosPage() {
     const episodes = await EpisodeService.getAll();
 

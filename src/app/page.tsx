@@ -5,6 +5,8 @@ import { EpisodeService, BlogService } from "@/lib/services";
 import { ArrowRight } from "lucide-react";
 import Link from "next/link";
 
+export const revalidate = 60; // Actualizar cada minuto
+
 export default async function Home() {
   const latestEpisodes = await EpisodeService.getLatest(3);
   const latestPosts = await BlogService.getLatest(2);
