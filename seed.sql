@@ -1,48 +1,45 @@
 -- Semilla de datos para MasQueSeres
 -- Ejecuta esto en el SQL Editor de Supabase
 
--- Limpiar tablas (opcional, cuidado si ya tienes datos)
--- TRUNCATE episodes, guests, blog_posts CASCADE;
+-- Limpiar tablas
+TRUNCATE episodes, guests, blog_posts CASCADE;
 
 -- Insertar Episodios y capturar IDs para los invitados
 DO $$
 DECLARE
-  ep6_id uuid;
-  ep4_id uuid;
   ep1_id uuid;
   ep2_id uuid;
   ep3_id uuid;
+  ep4_id uuid;
+  ep5_id uuid;
+  ep6_id uuid;
 BEGIN
-  -- Episodio 6
+  -- Episodio 1 (Real)
   INSERT INTO episodes (youtube_id, title, description, summary, published_at, duration, thumbnail_url)
-  VALUES ('dQw4w9WgXcQ', 'Jornada etnográfica', 'Descubrimos técnicas milenarias adaptadas a la vida moderna.', 'Vivimos en un mundo saturado de ruido...', '2023-10-22', '38:15', 'https://images.unsplash.com/photo-1499209974431-9dac3adaf471?q=80&w=2070&auto=format&fit=crop')
-  RETURNING id INTO ep6_id;
-
-  -- Episodio 4
-  INSERT INTO episodes (youtube_id, title, description, summary, published_at, duration, thumbnail_url)
-  VALUES ('dQw4w9WgXcQ', 'Tantra: El camino de la presencia absoluta', 'Exploramos con Madur la verdadera esencia del Tantra...', 'En este episodio nos sumergimos en una conversación transformadora...', '2023-11-05', '58:40', 'https://images.unsplash.com/photo-1545389336-cf09bd822c56?q=80&w=1964&auto=format&fit=crop')
-  RETURNING id INTO ep4_id;
-
-  -- Episodio 1
-  INSERT INTO episodes (youtube_id, title, description, summary, published_at, duration, thumbnail_url)
-  VALUES ('9bZkp7q19f0', 'La Vulnerabilidad como Superpoder', 'En este episodio exploramos por qué mostrar nuestras grietas nos hace más fuertes.', 'Hoy conversamos sobre cómo la honestidad radical...', '2023-10-15', '45:20', 'https://images.unsplash.com/photo-1516280440614-37939bbacd81?q=80&w=2070&auto=format&fit=crop')
+  VALUES (
+    'WG4GYMwapWk', 
+    'TANTRA: Más allá del sexo', 
+    'En este capítulo de estreno, Diana se sienta con Madhur, un experto en el camino del Tantra, para tener una conversación profunda y reveladora sobre la verdadera esencia de esta práctica milenaria. Lejos de los mitos y la comercialización, exploramos el Tantra como un camino de presencia absoluta, de conexión con la energía vital y de expansión de la consciencia a través del cuerpo y el espíritu.', 
+    'Descubrimos que el Tantra no es lo que nos han contado. Es una invitación a vivir con el corazón abierto y los sentidos despiertos.', 
+    '2024-01-15', 
+    '52:30', 
+    'https://img.youtube.com/vi/WG4GYMwapWk/maxresdefault.jpg'
+  )
   RETURNING id INTO ep1_id;
 
-  -- Episodio 2
+  -- Episodio 2 (Placeholder)
   INSERT INTO episodes (youtube_id, title, description, summary, published_at, duration, thumbnail_url)
-  VALUES ('dQw4w9WgXcQ', 'El Arte del Silencio Interior', 'Descubrimos técnicas milenarias adaptadas a la vida moderna.', 'Vivimos en un mundo saturado de ruido...', '2023-10-22', '38:15', 'https://images.unsplash.com/photo-1499209974431-9dac3adaf471?q=80&w=2070&auto=format&fit=crop')
+  VALUES ('dQw4w9WgXcQ', 'El Arte del Silencio Interior', 'Descubrimos técnicas milenarias adaptadas a la vida moderna.', 'Vivimos en un mundo saturado de ruido...', '2023-11-20', '38:15', 'https://images.unsplash.com/photo-1499209974431-9dac3adaf471?q=80&w=2070&auto=format&fit=crop')
   RETURNING id INTO ep2_id;
 
-  -- Episodio 3
+  -- Episodio 3 (Placeholder)
   INSERT INTO episodes (youtube_id, title, description, summary, published_at, duration, thumbnail_url)
-  VALUES ('L_jWHffIx5E', 'Conectando con el "Ser"', '¿Somos lo que hacemos o somos lo que sentimos?', 'Una inmersión profunda en la ontología del lenguaje...', '2023-10-29', '52:04', 'https://images.unsplash.com/photo-1518063319789-7217e6706b04?q=80&w=1974&auto=format&fit=crop')
+  VALUES ('L_jWHffIx5E', 'Conectando con el "Ser"', '¿Somos lo que hacemos o somos lo que sentimos?', 'Una inmersión profunda en la ontología del lenguaje...', '2023-12-05', '52:04', 'https://images.unsplash.com/photo-1518063319789-7217e6706b04?q=80&w=1974&auto=format&fit=crop')
   RETURNING id INTO ep3_id;
 
   -- Insertar Invitados vinculados
   INSERT INTO guests (episode_id, name, role, photo_url, bio) VALUES
-  (ep6_id, 'Marc Soler', 'Instructor de Mindfulness', 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?q=80&w=2070&auto=format&fit=crop', 'Fundador del centro Quietud...'),
-  (ep4_id, 'Madur', 'Maestro de Tantra y Meditación', 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=1974&auto=format&fit=crop', 'Con más de 20 años de experiencia...'),
-  (ep1_id, 'Dra. Elena Ruiz', 'Psicóloga Clínica y Escritora', 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?q=80&w=1974&auto=format&fit=crop', 'Experta en terapia de aceptación...'),
+  (ep1_id, 'Madhur', 'Experto en Tantra y Meditación', 'https://images.unsplash.com/photo-1545389336-cf09bd822c56?q=80&w=1964&auto=format&fit=crop', 'Madhur es un facilitador con años de experiencia acompañando a personas en el despertar de la consciencia a través del cuerpo y la energía vital.'),
   (ep2_id, 'Marc Soler', 'Instructor de Mindfulness', 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?q=80&w=2070&auto=format&fit=crop', 'Fundador del centro Quietud...'),
   (ep3_id, 'Dra. Clara Méndez', 'Filósofa y Consultora', 'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?q=80&w=1976&auto=format&fit=crop', 'Investigadora especializada...');
 END $$;
