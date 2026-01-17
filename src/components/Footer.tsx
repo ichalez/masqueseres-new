@@ -11,9 +11,9 @@ export const Footer = () => {
                             Un viaje hacia la consciencia y la profundidad humana a través del diálogo y la reflexión.
                         </p>
                         <div className="flex gap-6">
-                            <a href="#" className="text-slate-400 hover:text-cyan-400 transition-colors">Instagram</a>
-                            <a href="#" className="text-slate-400 hover:text-cyan-400 transition-colors">YouTube</a>
-                            <a href="#" className="text-slate-400 hover:text-cyan-400 transition-colors">Spotify</a>
+                            <a href="https://instagram.com/masqueseres" target="_blank" rel="noopener noreferrer" className="text-slate-400 hover:text-cyan-400 transition-colors">Instagram</a>
+                            <a href="https://www.youtube.com/@Masqueserespodcast" target="_blank" rel="noopener noreferrer" className="text-slate-400 hover:text-cyan-400 transition-colors">YouTube</a>
+                            <a href="https://open.spotify.com/show/..." target="_blank" rel="noopener noreferrer" className="text-slate-400 hover:text-cyan-400 transition-colors">Spotify</a>
                         </div>
                     </div>
 

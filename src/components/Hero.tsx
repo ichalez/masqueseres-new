@@ -126,9 +126,15 @@ export const Hero: React.FC<HeroProps> = ({ featured }) => {
                 {/* Quick Links / Platforms */}
                 <div className="mt-12 flex flex-wrap justify-center gap-8 md:gap-16 items-center opacity-50 grayscale hover:grayscale-0 transition-all">
                     <p className="text-xs font-bold tracking-[0.3em] text-slate-400 w-full text-center mb-4 lg:mb-0 lg:w-auto">DISPONIBLE EN</p>
-                    <img src="https://upload.wikimedia.org/wikipedia/commons/2/26/Spotify_logo_with_text.svg" alt="Spotify" className="h-6" />
-                    <img src="https://upload.wikimedia.org/wikipedia/commons/b/b8/YouTube_Logo_2017.svg" alt="YouTube" className="h-5" />
-                    <img src="https://upload.wikimedia.org/wikipedia/commons/a/a4/Apple_Podcasts_logo.svg" alt="Apple Podcasts" className="h-6" />
+                    <a href="https://spotify.com" target="_blank" rel="noopener noreferrer">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/2/26/Spotify_logo_with_text.svg" alt="Spotify" className="h-6" />
+                    </a>
+                    <a href="https://www.youtube.com/@Masqueserespodcast" target="_blank" rel="noopener noreferrer">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/b/b8/YouTube_Logo_2017.svg" alt="YouTube" className="h-5" />
+                    </a>
+                    <a href="https://podcasts.apple.com" target="_blank" rel="noopener noreferrer">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/a/a4/Apple_Podcasts_logo.svg" alt="Apple Podcasts" className="h-6" />
+                    </a>
                 </div>
             </div>
         </section>
