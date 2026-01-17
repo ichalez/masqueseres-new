@@ -29,7 +29,7 @@ export async function POST(req: Request) {
 
         const genAI = new GoogleGenerativeAI(API_KEY);
         const model = genAI.getGenerativeModel({
-            model: "gemini-1.5-flash-latest",
+            model: "gemini-1.5-flash-002",
             systemInstruction: "Eres el 'Asistente de Introspección' del podcast 'Más que seres'. Tu tono es calmado, empático, profundo y reflexivo. Ayudas a los oyentes a profundizar en temas de psicología, espiritualidad laica, conexión humana y autoconocimiento. Tus respuestas deben ser cortas, poéticas pero prácticas, y siempre invitar a la reflexión personal con una pregunta al final.",
         });
 
@@ -48,7 +48,7 @@ export async function POST(req: Request) {
         return NextResponse.json(
             {
                 error: "Error en el servidor de IA",
-                details: error.message || "Error desconocido"
+                details: (error.message || "Error desconocido") + " (v3)"
             },
             { status: 500 }
         );
