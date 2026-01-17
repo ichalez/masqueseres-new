@@ -1,16 +1,29 @@
 import { GoogleGenerativeAI } from "@google/generative-ai";
 import { NextResponse } from "next/server";
 
-const API_KEY = process.env.GEMINI_API_KEY || "";
-
 export async function POST(req: Request) {
-    try {
-        const { prompt } = await req.json();
+    // Read key INSIDE the handler to ensure fresh environment access
+    const API_KEY = process.env.GEMINI_API_KEY;
 
-        if (!API_KEY) {
+    try {
+        const body = await req.json();
+        const prompt = body.prompt;
+
+        if (!API_KEY || API_KEY === "ESCRIBE_AQUI_TU_CLAVE_DE_GEMINI") {
+            console.error("GEMINI_API_KEY is missing or placeholder");
             return NextResponse.json(
-                { error: "AI Assistant not configured. Please set GEMINI_API_KEY." },
+                {
+                    error: "AI Assistant not configured.",
+                    details: "La clave GEMINI_API_KEY no se ha detectado en el servidor. Asegúrate de añadirla en Vercel y hacer un 'Redeploy'."
+                },
                 { status: 500 }
+            );
+        }
+
+        if (!prompt) {
+            return NextResponse.json(
+                { error: "No prompt provided" },
+                { status: 400 }
             );
         }
 
@@ -20,25 +33,23 @@ export async function POST(req: Request) {
             systemInstruction: "Eres el 'Asistente de Introspección' del podcast 'Más que seres'. Tu tono es calmado, empático, profundo y reflexivo. Ayudas a los oyentes a profundizar en temas de psicología, espiritualidad laica, conexión humana y autoconocimiento. Tus respuestas deben ser cortas, poéticas pero prácticas, y siempre invitar a la reflexión personal con una pregunta al final.",
         });
 
-        // Use a timeout to avoid hanging
-        const result = await model.generateContent(prompt);
+        // Use standard contents format
+        const result = await model.generateContent({
+            contents: [{ role: "user", parts: [{ text: prompt }] }]
+        });
+
         const response = await result.response;
         const text = response.text();
 
-        if (!text) {
-            throw new Error("Empty response from Gemini");
-        }
-
         return NextResponse.json({ text });
     } catch (error: any) {
-        console.error("Detailed Gemini API Error:", {
-            message: error.message,
-            stack: error.stack,
-            status: error.status,
-        });
+        console.error("Gemini Failure:", error);
 
         return NextResponse.json(
-            { error: "Lo siento, el asistente no está disponible en este momento. Por favor, inténtalo de nuevo más tarde.", details: error.message },
+            {
+                error: "Error en el servidor de IA",
+                details: error.message || "Error desconocido"
+            },
             { status: 500 }
         );
     }
