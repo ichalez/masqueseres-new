@@ -36,7 +36,10 @@ export default function AssistantPage() {
             const data = await response.json();
 
             if (data.error) {
-                setMessages(prev => [...prev, { role: 'assistant', text: "Lo siento, el asistente no está disponible en este momento. Por favor, asegúrate de configurar la clave de API." }]);
+                const errorText = data.details
+                    ? `Error: ${data.details}`
+                    : "Lo siento, el asistente no está disponible en este momento. Por favor, asegúrate de que la clave de API GEMINI_API_KEY esté correctamente configurada en Vercel.";
+                setMessages(prev => [...prev, { role: 'assistant', text: errorText }]);
             } else {
                 setMessages(prev => [...prev, { role: 'assistant', text: data.text }]);
             }
@@ -79,8 +82,8 @@ export default function AssistantPage() {
                                 </div>
                             )}
                             <div className={`max-w-[80%] p-5 rounded-3xl text-sm leading-relaxed ${m.role === 'user'
-                                    ? 'bg-cyan-600 text-white rounded-tr-none'
-                                    : 'bg-slate-50 text-slate-700 rounded-tl-none border border-slate-100'
+                                ? 'bg-cyan-600 text-white rounded-tr-none'
+                                : 'bg-slate-50 text-slate-700 rounded-tl-none border border-slate-100'
                                 }`}>
                                 {m.text}
                             </div>
