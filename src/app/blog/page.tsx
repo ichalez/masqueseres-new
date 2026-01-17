@@ -9,7 +9,7 @@ export default async function BlogPage() {
     return (
         <div className="py-20 px-6 md:px-12 max-w-7xl mx-auto w-full min-h-screen">
             <div className="mb-16">
-                <h1 className="font-serif text-4xl md:text-6xl font-bold mb-6 text-slate-900">Nuestra <span className="text-cyan-600">Bitácora</span></h1>
+                <h1 className="font-serif text-4xl md:text-6xl font-bold mb-6 text-slate-900">Nuestra <span className="text-cyan-600 italic">Bitácora</span></h1>
                 <p className="text-slate-500 max-w-2xl text-lg font-light">
                     Reflexiones profundas, artículos y pensamientos sobre el camino del autoconocimiento.
                 </p>

@@ -9,7 +9,7 @@ export default async function EpisodiosPage() {
     return (
         <div className="py-20 px-6 md:px-12 max-w-7xl mx-auto w-full min-h-screen">
             <div className="mb-16">
-                <h1 className="font-serif text-4xl md:text-6xl font-bold mb-6 text-slate-900">Archivo de <span className="text-cyan-600">Episodios</span></h1>
+                <h1 className="font-serif text-4xl md:text-6xl font-bold mb-6 text-slate-900">Archivo de <span className="text-cyan-600 italic">Episodios</span></h1>
                 <p className="text-slate-500 max-w-2xl text-lg font-light">
                     Explora todas nuestras conversaciones y descubre nuevas perspectivas sobre la vida y el ser.
                 </p>

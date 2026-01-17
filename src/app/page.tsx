@@ -29,7 +29,7 @@ export default async function Home() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-end justify-between mb-12">
             <div>
-              <h2 className="font-serif text-4xl font-bold text-slate-900 mb-4">Últimos Episodios</h2>
+              <h2 className="font-serif text-4xl font-bold text-slate-900 mb-4">Últimos <span className="text-cyan-600 italic">Episodios</span></h2>
               <div className="h-1 w-20 bg-cyan-500 rounded-full"></div>
             </div>
             <Link href="/episodios" className="text-cyan-600 font-bold text-sm hover:underline flex items-center gap-2">
@@ -57,7 +57,7 @@ export default async function Home() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-end justify-between mb-12">
             <div>
-              <h2 className="font-serif text-4xl font-bold text-slate-900 mb-4">Nuestra Bitácora</h2>
+              <h2 className="font-serif text-4xl font-bold text-slate-900 mb-4">Nuestra <span className="text-cyan-600 italic">Bitácora</span></h2>
               <div className="h-1 w-20 bg-cyan-500 rounded-full"></div>
             </div>
             <Link href="/blog" className="text-cyan-600 font-bold text-sm hover:underline flex items-center gap-2">
